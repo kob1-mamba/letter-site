@@ -288,6 +288,8 @@
       <label for="letterContent">信件内容</label>
       <textarea id="letterContent" placeholder="请输入你想写下的内容......"></textarea>
 
+      <!-- 新增: 优化信件按钮 -->
+      <button class="primary-btn" id="optimizeLetterBtn">优化信件</button>
       <button class="primary-btn" id="saveLetterBtn">保存信件</button>
       <button class="secondary-btn" id="backToPasswordFromWriteBtn">返回修改密码</button>
 
@@ -346,6 +348,9 @@
     const backToPasswordFromWriteBtn = document.getElementById("backToPasswordFromWriteBtn");
     const writeMsg = document.getElementById("writeMsg");
 
+    // 新增: 优化信件按钮元素
+    const optimizeLetterBtn = document.getElementById("optimizeLetterBtn");
+
     const letterResult = document.getElementById("letterResult");
     const readMsg = document.getElementById("readMsg");
     const backToPasswordFromReadBtn = document.getElementById("backToPasswordFromReadBtn");
@@ -365,6 +370,49 @@
       passwordMsg.textContent = "";
       writeMsg.textContent = "";
       readMsg.textContent = "";
+    }
+
+    // 新增: 优化信件函数
+    async function optimizeLetter() {
+      const content = letterContent.value.trim();
+      writeMsg.textContent = "";
+
+      if (!content) {
+        writeMsg.textContent = "请先输入一点信件内容，再进行优化。";
+        return;
+      }
+
+      optimizeLetterBtn.disabled = true;
+      optimizeLetterBtn.textContent = "优化中...";
+
+      try {
+        const response = await fetch("https://eyyzzulqrzbespjfizqr.supabase.co/functions/v1/optimize-letter", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ text: content })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          writeMsg.textContent = data.error || "优化失败，请稍后再试。";
+          return;
+        }
+
+        if (data.output) {
+          letterContent.value = data.output;
+          writeMsg.textContent = "优化完成，你可以继续修改后再保存。";
+        } else {
+          writeMsg.textContent = "没有获取到优化结果。";
+        }
+      } catch (error) {
+        writeMsg.textContent = "优化失败：" + error.message;
+      } finally {
+        optimizeLetterBtn.disabled = false;
+        optimizeLetterBtn.textContent = "优化信件";
+      }
     }
 
     chooseWrite.addEventListener("click", () => {
@@ -477,6 +525,9 @@
       letterContent.value = "";
       successModal.classList.add("show");
     });
+
+    // 新增: 绑定优化信件点击事件
+    optimizeLetterBtn.addEventListener("click", optimizeLetter);
   </script>
 </body>
 </html>
