@@ -14,13 +14,11 @@
       margin: 0;
       min-height: 100vh;
       font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-      /* 粉色渐变背景加爱心装饰 */
       background:
         radial-gradient(circle 120px at 10% 20%, rgba(255, 182, 193, 0.3), transparent),
         radial-gradient(circle 80px at 85% 15%, rgba(255, 154, 185, 0.25), transparent),
         radial-gradient(circle 100px at 20% 80%, rgba(255, 192, 203, 0.28), transparent),
         radial-gradient(circle 90px at 90% 75%, rgba(255, 112, 181, 0.2), transparent),
-        /* 小爱心装饰 */
         radial-gradient(circle 4px at 30% 30%, #ff79a1 50%, transparent 52%),
         radial-gradient(circle 4px at 70% 40%, #ff96b8 50%, transparent 52%),
         radial-gradient(circle 4px at 15% 60%, #ffb6c1 50%, transparent 52%),
@@ -35,7 +33,6 @@
       position: relative;
     }
 
-    /* 角落大爱心装饰 */
     body::before, body::after {
       content: "💖";
       position: fixed;
@@ -153,10 +150,21 @@
       box-shadow: 0 12px 35px rgba(236, 64, 122, 0.4);
     }
 
+    .action-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
     .small-action-btn {
-      padding: 10px 14px;
+      width: auto;
+      min-width: 220px;
+      padding: 8px 18px;
       font-size: 14px;
       border-radius: 12px;
+      display: inline-block;
     }
 
     .secondary-btn {
@@ -306,12 +314,15 @@
       body::before, body::after {
         font-size: 32px;
       }
+
+      .small-action-btn {
+        min-width: 180px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="app">
-    <!-- 第一步：选择模式 -->
     <section class="panel active" id="stepChooseMode">
       <div class="brand">Secret Letter</div>
       <h1>欢迎来到秘密信箱</h1>
@@ -326,7 +337,6 @@
       </div>
     </section>
 
-    <!-- 第二步：输入密码-->
     <section class="panel" id="stepPassword">
       <div class="top-tip" id="modeTip">当前模式：写信</div>
       <h1>请输入密码</h1>
@@ -343,7 +353,6 @@
       <div class="message" id="passwordMsg"></div>
     </section>
 
-    <!-- 第三步A：写信 -->
     <section class="panel" id="stepWriteLetter">
       <div class="top-tip">写信模式</div>
       <h1>写下这封信</h1>
@@ -354,14 +363,16 @@
       <label for="letterContent">信件内容</label>
       <textarea id="letterContent" placeholder="请输入你想写下的内容......"></textarea>
 
-      <button class="primary-btn small-action-btn" id="optimizeLetterBtn">优化信件</button>
-      <button class="primary-btn small-action-btn" id="saveLetterBtn">保存信件</button>
+      <div class="action-row">
+        <button class="primary-btn small-action-btn" id="optimizeLetterBtn">优化信件</button>
+        <button class="primary-btn small-action-btn" id="saveLetterBtn">保存信件</button>
+      </div>
+
       <button class="secondary-btn" id="backToPasswordFromWriteBtn">返回修改密码</button>
 
       <div class="message" id="writeMsg"></div>
     </section>
 
-    <!-- 第三步B：查看信 -->
     <section class="panel" id="stepReadLetter">
       <div class="top-tip">提取信件模式</div>
       <h1>你的信件</h1>
