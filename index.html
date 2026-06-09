@@ -153,6 +153,12 @@
       box-shadow: 0 12px 35px rgba(236, 64, 122, 0.4);
     }
 
+    .small-action-btn {
+      padding: 12px 16px;
+      font-size: 14px;
+      border-radius: 16px;
+    }
+
     .secondary-btn {
       background: rgba(255, 255, 255, 0.7);
       color: #880e4f;
@@ -348,8 +354,8 @@
       <label for="letterContent">信件内容</label>
       <textarea id="letterContent" placeholder="请输入你想写下的内容......"></textarea>
 
-      <button class="primary-btn" id="optimizeLetterBtn">优化信件</button>
-      <button class="primary-btn" id="saveLetterBtn">保存信件</button>
+      <button class="primary-btn small-action-btn" id="optimizeLetterBtn">优化信件</button>
+      <button class="primary-btn small-action-btn" id="saveLetterBtn">保存信件</button>
       <button class="secondary-btn" id="backToPasswordFromWriteBtn">返回修改密码</button>
 
       <div class="message" id="writeMsg"></div>
