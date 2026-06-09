@@ -14,30 +14,61 @@
       margin: 0;
       min-height: 100vh;
       font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      /* 粉色渐变背景加爱心装饰 */
       background:
-        radial-gradient(circle at top left, rgba(120, 119, 198, 0.35), transparent 35%),
-        radial-gradient(circle at top right, rgba(255, 119, 198, 0.25), transparent 30%),
-        linear-gradient(135deg, #0f172a, #111827 45%, #1e293b 100%);
-      color: #f8fafc;
+        radial-gradient(circle 120px at 10% 20%, rgba(255, 182, 193, 0.3), transparent),
+        radial-gradient(circle 80px at 85% 15%, rgba(255, 154, 185, 0.25), transparent),
+        radial-gradient(circle 100px at 20% 80%, rgba(255, 192, 203, 0.28), transparent),
+        radial-gradient(circle 90px at 90% 75%, rgba(255, 112, 181, 0.2), transparent),
+        /* 小爱心装饰 */
+        radial-gradient(circle 4px at 30% 30%, #ff79a1 50%, transparent 52%),
+        radial-gradient(circle 4px at 70% 40%, #ff96b8 50%, transparent 52%),
+        radial-gradient(circle 4px at 15% 60%, #ffb6c1 50%, transparent 52%),
+        radial-gradient(circle 4px at 80% 25%, #ff87ab 50%, transparent 52%),
+        radial-gradient(circle 4px at 65% 85%, #ffc0cb 50%, transparent 52%),
+        linear-gradient(135deg, #fff0f6 0%, #fce4ec 30%, #f8bbd0 65%, #f48fb1 100%);
+      color: #4a154b;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      position: relative;
+    }
+
+    /* 角落大爱心装饰 */
+    body::before, body::after {
+      content: "💖";
+      position: fixed;
+      font-size: 48px;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    body::before {
+      top: 24px;
+      left: 24px;
+    }
+
+    body::after {
+      bottom: 24px;
+      right: 24px;
     }
 
     .app {
       width: 100%;
       max-width: 560px;
+      position: relative;
+      z-index: 1;
     }
 
     .panel {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border-radius: 24px;
-      padding: 32px 24px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      border-radius: 28px;
+      padding: 36px 28px;
+      box-shadow: 0 20px 60px rgba(244, 143, 177, 0.35);
       display: none;
     }
 
@@ -47,22 +78,29 @@
 
     .brand {
       font-size: 14px;
-      color: #cbd5e1;
+      color: #ad1457;
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand::before {
+      content: "💌";
     }
 
     h1 {
       margin: 0 0 10px;
       font-size: 32px;
       font-weight: 700;
-      color: #ffffff;
+      color: #880e4f;
     }
 
     .subtitle {
       margin: 0 0 28px;
-      color: #cbd5e1;
+      color: #6a1b9a;
       line-height: 1.7;
       font-size: 15px;
     }
@@ -77,8 +115,8 @@
     button {
       width: 100%;
       border: none;
-      border-radius: 16px;
-      padding: 15px 18px;
+      border-radius: 20px;
+      padding: 16px 20px;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
@@ -86,68 +124,78 @@
     }
 
     .choice-btn {
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.7);
+      color: #880e4f;
+      border: 1px solid rgba(244, 143, 177, 0.4);
       text-align: left;
+    }
+
+    .choice-btn::before {
+      content: "💌";
+      margin-right: 8px;
     }
 
     .choice-btn:hover {
       transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 20px rgba(244, 143, 177, 0.25);
     }
 
     .primary-btn {
-      background: linear-gradient(135deg, #7c3aed, #2563eb);
+      background: linear-gradient(135deg, #f06292, #ec407a, #d81b60);
       color: white;
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 10px 30px rgba(236, 64, 122, 0.35);
     }
 
     .primary-btn:hover {
       transform: translateY(-2px);
       opacity: 0.96;
+      box-shadow: 0 12px 35px rgba(236, 64, 122, 0.4);
     }
 
     .secondary-btn {
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.7);
+      color: #880e4f;
       margin-top: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(244, 143, 177, 0.4);
     }
 
     .secondary-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 16px rgba(244, 143, 177, 0.2);
     }
 
     label {
       display: block;
       margin-bottom: 10px;
-      color: #e2e8f0;
+      color: #ad1457;
       font-size: 14px;
+      font-weight: 500;
     }
 
     input,
     textarea {
       width: 100%;
-      padding: 14px 16px;
+      padding: 16px 18px;
       margin-bottom: 18px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
+      border-radius: 18px;
+      border: 1px solid rgba(244, 143, 177, 0.45);
+      background: rgba(255, 255, 255, 0.7);
+      color: #4a154b;
       font-size: 16px;
       outline: none;
     }
 
     input::placeholder,
     textarea::placeholder {
-      color: #94a3b8;
+      color: #ba68c8;
     }
 
     input:focus,
     textarea:focus {
-      border-color: rgba(96, 165, 250, 0.8);
-      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+      border-color: rgba(236, 64, 122, 0.8);
+      box-shadow: 0 0 0 4px rgba(236, 64, 122, 0.15);
+      background: rgba(255, 255, 255, 0.9);
     }
 
     textarea {
@@ -159,17 +207,17 @@
     .message {
       margin-top: 14px;
       font-size: 14px;
-      color: #cbd5e1;
+      color: #ad1457;
       min-height: 22px;
     }
 
     .letter-box {
       margin-top: 20px;
-      padding: 20px;
+      padding: 24px;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #f8fafc;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(244, 143, 177, 0.4);
+      color: #4a154b;
       white-space: pre-wrap;
       line-height: 1.9;
       min-height: 180px;
@@ -180,10 +228,11 @@
       margin-bottom: 18px;
       padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      color: #cbd5e1;
+      background: rgba(236, 64, 122, 0.15);
+      color: #ad1457;
       font-size: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(236, 64, 122, 0.3);
+      font-weight: 500;
     }
 
     .hidden {
@@ -193,7 +242,7 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.72);
+      background: rgba(74, 21, 75, 0.55);
       display: none;
       align-items: center;
       justify-content: center;
@@ -208,37 +257,48 @@
     .modal {
       width: 100%;
       max-width: 420px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(244, 143, 177, 0.6);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border-radius: 24px;
-      padding: 28px 22px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      border-radius: 28px;
+      padding: 32px 24px;
+      box-shadow: 0 20px 60px rgba(74, 21, 75, 0.35);
       text-align: center;
+    }
+
+    .modal::before {
+      content: "💖";
+      font-size: 40px;
+      display: block;
+      margin-bottom: 12px;
     }
 
     .modal h2 {
       margin: 0 0 12px;
       font-size: 24px;
-      color: #ffffff;
+      color: #880e4f;
     }
 
     .modal p {
       margin: 0 0 20px;
-      color: #cbd5e1;
+      color: #6a1b9a;
       line-height: 1.8;
       font-size: 15px;
     }
 
     @media (max-width: 640px) {
       .panel {
-        padding: 24px 18px;
-        border-radius: 20px;
+        padding: 28px 20px;
+        border-radius: 24px;
       }
 
       h1 {
         font-size: 26px;
+      }
+
+      body::before, body::after {
+        font-size: 32px;
       }
     }
   </style>
@@ -260,7 +320,7 @@
       </div>
     </section>
 
-    <!-- 第二步：输入密码 -->
+    <!-- 第二步：输入密码-->
     <section class="panel" id="stepPassword">
       <div class="top-tip" id="modeTip">当前模式：写信</div>
       <h1>请输入密码</h1>
@@ -288,7 +348,6 @@
       <label for="letterContent">信件内容</label>
       <textarea id="letterContent" placeholder="请输入你想写下的内容......"></textarea>
 
-      <!-- 新增: 优化信件按钮 -->
       <button class="primary-btn" id="optimizeLetterBtn">优化信件</button>
       <button class="primary-btn" id="saveLetterBtn">保存信件</button>
       <button class="secondary-btn" id="backToPasswordFromWriteBtn">返回修改密码</button>
@@ -348,7 +407,6 @@
     const backToPasswordFromWriteBtn = document.getElementById("backToPasswordFromWriteBtn");
     const writeMsg = document.getElementById("writeMsg");
 
-    // 新增: 优化信件按钮元素
     const optimizeLetterBtn = document.getElementById("optimizeLetterBtn");
 
     const letterResult = document.getElementById("letterResult");
@@ -372,7 +430,6 @@
       readMsg.textContent = "";
     }
 
-    // 新增: 优化信件函数
     async function optimizeLetter() {
       const content = letterContent.value.trim();
       writeMsg.textContent = "";
@@ -526,7 +583,6 @@
       successModal.classList.add("show");
     });
 
-    // 新增: 绑定优化信件点击事件
     optimizeLetterBtn.addEventListener("click", optimizeLetter);
   </script>
 </body>
